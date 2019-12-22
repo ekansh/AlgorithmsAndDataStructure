@@ -1,8 +1,12 @@
 package algos.matrix;
-
+/**
+ * can only travel down and right in matrix
+ * @author Ekansh
+ *
+ */
 public class NumberOfPathsPossibleInNxNMatrixRecursive {
 	public static void main(String[] args) {
-		int N=4;
+		int N=3;
 		int computePath = computePath(0,0,N);
 		System.out.println(computePath);
 	}

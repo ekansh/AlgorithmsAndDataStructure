@@ -4,12 +4,12 @@ import java.util.BitSet;
 import java.util.Map;
 
 /**
- * Remove duplicates in a string without extra buffer.
- * How in java one can do that without using extra buffer.
- * String is im-mutable
- * @author ekansh
- *
- */
+ Remove duplicates in a string without extra buffer.
+ How in java one can do that without using extra buffer.
+ String is im-mutable
+ @author ekansh
+
+**/
 
 public class RemoveDuplicatesInString {
 	// static BitSet [] ascii = new BitSet[256];

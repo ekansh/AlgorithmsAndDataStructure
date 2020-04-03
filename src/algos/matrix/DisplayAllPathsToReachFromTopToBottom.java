@@ -1,7 +1,7 @@
 package algos.matrix;
 /**
- * possible paths: right and down
- */
+ possible paths: right and down
+**/
 import java.util.Arrays;
 import java.util.Collections;
 

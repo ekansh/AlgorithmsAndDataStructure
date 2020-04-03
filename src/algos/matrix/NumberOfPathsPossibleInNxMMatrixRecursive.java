@@ -1,7 +1,7 @@
 package algos.matrix;
 /**
- * possible paths: right and down
- */
+ possible paths: right and down
+**/
 public class NumberOfPathsPossibleInNxMMatrixRecursive {
 	public static void main(String[] args) {
 		//M x N matrix

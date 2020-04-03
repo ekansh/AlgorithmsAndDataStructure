@@ -5,11 +5,11 @@ import dataStructure.ListNode;
 public class ReverseLinkedList {
 
 	/**
-	 * Iterative solution for this problem. The complexity order of this
-	 * algorithm in time terms is O(N) where N is the number of elements in the
-	 * list. The complexity order in this algorithm in space terms is O(1)
-	 * because we only use two additional pointers and we don't allocate memory.
-	 */
+	 Iterative solution for this problem. The complexity order of this
+	 algorithm in time terms is O(N) where N is the number of elements in the
+	 list. The complexity order in this algorithm in space terms is O(1)
+	 because we only use two additional pointers and we don't allocate memory.
+	**/
 	public ListNode reverseIterative(ListNode list) {
 		validateInput(list);
 
@@ -29,11 +29,11 @@ public class ReverseLinkedList {
 	}
 
 	/**
-	 * Recursive solution to this problem. The complexity order of this
-	 * algorithm in time terms is O(N) where N is the number of elements in the
-	 * list. The complexity order in this algorithm in space terms is O(1)
-	 * because we only use two additional pointers and we don't allocate memory.
-	 */
+	 Recursive solution to this problem. The complexity order of this
+	 algorithm in time terms is O(N) where N is the number of elements in the
+	 list. The complexity order in this algorithm in space terms is O(1)
+	 because we only use two additional pointers and we don't allocate memory.
+	**/
 	public ListNode<Integer> reverseRecursive(ListNode list) {
 		validateInput(list);
 		return reverseRecursiveInner(list);

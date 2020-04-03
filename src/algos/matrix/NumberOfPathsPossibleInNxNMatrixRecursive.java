@@ -1,9 +1,9 @@
 package algos.matrix;
 /**
- * can only travel down and right in matrix
- * @author Ekansh
- *
- */
+ can only travel down and right in matrix
+ @author Ekansh
+
+**/
 public class NumberOfPathsPossibleInNxNMatrixRecursive {
 	public static void main(String[] args) {
 		int N=3;

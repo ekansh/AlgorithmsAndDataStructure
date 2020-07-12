@@ -5,7 +5,6 @@ import java.util.List;
 
 public class ExtendVsSuper {
 	public static void main(String[] args) {
-				
 		method1(new ArrayList<B>());
 		method2(new ArrayList<A>());
 		method3(new ArrayList<A>());

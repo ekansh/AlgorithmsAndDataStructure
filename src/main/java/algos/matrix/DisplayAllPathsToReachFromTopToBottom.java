@@ -5,13 +5,15 @@ package algos.matrix;
 import java.util.Arrays;
 import java.util.Collections;
 
+import algos.matrix.utils.SimpleMatrixUtils;
+
 public class DisplayAllPathsToReachFromTopToBottom {
 	static String ar[] ;
 	static int mat[][];
 	public static void main(String[] args) {
 		//M x N matrix
-		int row=4;
-		int col=3;
+		int row=5;
+		int col=4;
 		mat= SimpleMatrixUtils.initalizeMatrix(row, col);
 		SimpleMatrixUtils.printMat(mat);
 		System.out.println("******************************");

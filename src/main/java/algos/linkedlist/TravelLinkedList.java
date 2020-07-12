@@ -13,4 +13,14 @@ public class TravelLinkedList {
 			 travelLinkedList(start.getNext());
 		}
 	}
+	public static <T> void travelLinkedList(ListNode<T> start, int len){
+		if (start == null || len  ==0 ){
+				System.out.println("");
+				return ;
+				
+		}else{
+			System.out.print(" -> "+start.getData());
+			 travelLinkedList(start.getNext(), len-1);
+		}
+	}
 }

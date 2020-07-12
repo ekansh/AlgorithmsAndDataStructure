@@ -3,11 +3,13 @@ package dataStructure;
 
 public class TreeNode<T> {
 	public T t;
+	public Integer val;
 	public TreeNode<T> left;
 	public TreeNode<T> right;
 
 	public TreeNode(T t) {
 		this.t = t;
+		this.val=(Integer) t;
 	}
 
 	public T getT() {
@@ -34,7 +36,11 @@ public class TreeNode<T> {
 		this.right = right;
 	}
 
-	 
+	 @Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return t.toString();
+	}
 
 	
 }

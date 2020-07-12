@@ -14,7 +14,9 @@ public class PatternMatching {
 		// Pattern pattern = Pattern.compile("\\s+", Pattern.CASE_INSENSITIVE);
 		Matcher matcher = pattern.matcher(EXAMPLE_TEST);
 		// check all occurance
-		while (matcher.find()) {
+		boolean matches = matcher.matches();
+		System.out.println(matches);
+		while (matcher.matches()) {
 			System.out.println("Start index: " + matcher.start() + " End index: " + matcher.end() + " string found "
 					+ matcher.group());
 		}

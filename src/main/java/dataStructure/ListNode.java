@@ -2,11 +2,13 @@ package dataStructure;
 
 public class ListNode<T> {
 
-	private T data;
-	private ListNode<T> next;
+	 public T data;
+	 public Integer val;
+	 public ListNode<T> next;
 
 	public ListNode(T data) {
 	    this.data = data;
+	    this.val = ( Integer) data;
 	  }
 
 	public T getData() {
@@ -47,7 +49,13 @@ public class ListNode<T> {
 
 	@Override
 	public String toString() {
-		return "ListNode{" + "data=" + data + ", next=" + next + '}';
+//		ListNode l = this;
+		StringBuilder sb = new StringBuilder();
+//		while (l!= null) {
+//			sb.append(l.val+"->");
+//			l = l.next;
+//		}
+		return val.toString();
 	}
 	
 	

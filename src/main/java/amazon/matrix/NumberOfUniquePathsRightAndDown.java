@@ -13,10 +13,12 @@ import java.util.Set;
 import algos.matrix.utils.CreateIntMatrix;
 import algos.matrix.utils.SimpleMatrixUtils;
 
-public class Sol {
+ 
+public class NumberOfUniquePathsRightAndDown {
 	public static void main(String[] args) {
-		Sol s = new Sol();
-		s.uniquePaths(3,2);
+		NumberOfUniquePathsRightAndDown s = new NumberOfUniquePathsRightAndDown();
+		int uniquePaths = s.uniquePaths(3,2);
+		System.out.println(uniquePaths);
 	}
 
 	public int uniquePaths(int m, int n) {
@@ -34,7 +36,7 @@ public class Sol {
 		if (map.containsKey(cell))
 			return map.get(cell);
 
-		int v = uniquePaths(r + 1, c) + uniquePaths(r, c + 1);
+		int v = uniquePaths(r + 1, c,m,n) + uniquePaths(r, c + 1,m,n);
 		map.put(cell, v);
 		return v;
 	}

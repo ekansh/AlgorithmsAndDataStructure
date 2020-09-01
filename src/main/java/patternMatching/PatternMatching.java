@@ -8,6 +8,12 @@ public class PatternMatching {
 
 	public static void main(String[] args) {
 
+		Pattern compile = Pattern.compile("\\d+");
+		Matcher matcher2 = compile.matcher("sa");
+		boolean matches2 = matcher2.matches();
+		System.out.println(matches2);
+		System.exit(11);
+		
 		Pattern pattern = Pattern.compile("\\w+");
 		// in case you would like to ignore case sensitivity,
 		// you could use this statement:

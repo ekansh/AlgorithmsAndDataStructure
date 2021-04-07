@@ -1,8 +1,6 @@
 package range_interval_overlap;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.*;
 
 /**
  * 1. Given a red tape and a set of blue tapes. Tape is represented by interval.
@@ -29,15 +27,56 @@ import java.util.stream.Collectors;
 public class RedAndBlueTapeRangeBasedQuestionFacebook {
 	private static class Interval{
 		double start, end;
+		Interval(){}
+		Interval(double s, double e){ start=s; end =e;}
 	}
 	public static void main(String[] args) {
-		Interval blue[] = null, red= null;
-		List<Interval> bl= Arrays.stream(blue).filter(b-> b.end<=red.start || b.start >= red.end).collect(Collectors.toList());
-		bl.sort((a,b)->a.start -b.start <=0?-1:1);
-		mergeIntervals(bl);
+		List<Interval> bl = new ArrayList<>();
+		bl.add(new Interval(1 ,2 ));bl.add(new Interval(2,5));
+		bl.add(new Interval( 7,18));bl.add(new Interval( 19,200));
+		bl.add(new Interval( 2,12));bl.add(new Interval( -1,15));
+		bl.add(new Interval( 7,18));bl.add(new Interval( 19,22));
+		Interval red =new Interval(10,20);
+		System.out.println(mergeIntervals(bl,red));
 	}
-	private static void mergeIntervals(List<Interval> bl) {
-		// TODO Auto-generated method stub
+	private static boolean mergeIntervals(List<Interval> bl, Interval red) {
+		double min = bl.get(0).start, max = bl.get(0).end;
 		
+		for(Interval interval : bl){
+			min = Math.min(interval.start, min);
+			max = Math.max(interval.end,max);
+		}
+		PriorityQueue<Interval> pq = new PriorityQueue<Interval>(
+				 (a,b)->Double.compare(a.start, b.start) ==0 ? 
+						 Double.compare(a.end,b.end): 
+							 Double.compare(a.start, b.start)
+					);
+		for (Interval interval : bl) {
+			if( interval.start>=red.end  || interval.end<=red.start)
+				continue;
+			pq.offer(interval);
+		}
+		if(pq.isEmpty()) {
+			return true;
+		}
+		while( pq.size()>1){
+			Interval first = pq.poll();
+			Interval second = pq.poll();
+			if(first.end>=second.start){ // merge them into one
+				Interval merged = new Interval();
+				merged.start = Math.min(first.start,second.start) ;// first.start will always be lesser
+				merged.end = Math.max(first.end,second.end) ;
+				pq.offer(merged);
+			}else{
+				return true;
+			}
+		}
+		System.out.println(pq.size());
+		// if you have reached here then there would be exactly one item in the pq ( unless input was empty) 
+		Interval first = pq.poll();
+		if( first.start>red.start || first.end < red.end) {
+			return true;
+		}
+		return false;
 	}
 }

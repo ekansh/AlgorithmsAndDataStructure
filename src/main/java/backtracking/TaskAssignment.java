@@ -33,16 +33,20 @@ public class TaskAssignment {
 	Map<String, Integer> res = new HashMap<>(), finalRes = null;
 
 	private void backtrack(List<String> people, List<List<Integer>> tasks, int pos, Set<Integer> assigned) {
-		if (finalRes != null)
-			return;
+//		if (finalRes != null)
+//			return;
 		if (pos == people.size()) {
-			System.out.println(res.size());
+//			System.out.println(res.size());
 			if (res.size() == people.size()) {
 				finalRes = new HashMap<>(res);
 			}
 		}
-
+		
+		StringBuilder sb = new StringBuilder();
+		for ( int p=0;p<pos; p++)sb.append(" ");
+		
 		for (int i = pos; i < people.size(); i++) {
+			System.out.println(sb+"i="+i+", pos="+pos);
 			String thisPerson = people.get(i);
 			List<Integer> thisPersonsElligbleTasks = tasks.get(i);
 			for (Integer aTask : thisPersonsElligbleTasks) {

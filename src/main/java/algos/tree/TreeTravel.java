@@ -1,5 +1,7 @@
 package algos.tree;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -16,6 +18,7 @@ import dataStructure.TreeNode;
 public class TreeTravel {
 	private static Stack<TreeNode> s = new Stack<>();
 	public static int maxStackSize = Integer.MIN_VALUE;
+
 	/**
 	 * Use it like this : travel(root,new ArrayList<TreeNode>(), all); where all =>
 	 * List<List<TreeNode>> all = new ArrayList<List<TreeNode>>();
@@ -36,23 +39,25 @@ public class TreeTravel {
 		listAllPaths(root.left, l, all);
 		listAllPaths(root.right, l, all);
 		l.remove(root);
-		
+
 	}
+
 	/**
-	 * inorder recursive travel . It will help in maintaining Prev and Current 
+	 * inorder recursive travel . It will help in maintaining Prev and Current
+	 * 
 	 * @param root
 	 */
 	public static void inorder(TreeNode<Integer> root) {
-		maxStackSize = Math.max( maxStackSize,s.size());
+		maxStackSize = Math.max(maxStackSize, s.size());
 		if (root == null)
 			return;
 		inorder(root.getLeft());
-			System.out.println("CUR: " + root.getT() + ",");
-			TreeNode prev = null;
-			if (!s.isEmpty())
-				prev = s.pop();
-			System.out.println("Prev: " + prev + ",");
-			s.push(root);
+		System.out.println("CUR: " + root.getT() + ",");
+		TreeNode prev = null;
+		if (!s.isEmpty())
+			prev = s.pop();
+		System.out.println("Prev: " + prev + ",");
+		s.push(root);
 		inorder(root.getRight());
 //		if (!s.isEmpty())
 //		s.pop();
@@ -90,12 +95,12 @@ public class TreeTravel {
 			}
 		}
 	}
-	
+
 	public static void levelOrderWithMultiLine(TreeNode<Integer> root) {
 		System.out.println("WARNING : using number 88 to determine the next depth");
 		Queue<TreeNode<Integer>> q = new LinkedList<>();
 		q.add(root);
-		Integer separator=188;
+		Integer separator = 188;
 		q.add(new TreeNode<Integer>(separator));// this will help in identifying when we have completed first breadth
 		while (!q.isEmpty()) {
 			TreeNode<Integer> poll = q.poll();
@@ -119,7 +124,7 @@ public class TreeTravel {
 		System.out.println();
 	}
 
-	public static void main(String[] args) {
+	public static void main1(String[] args) {
 		TreeTravel treeTravel = new TreeTravel();
 		List<Integer> asList = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8);
 		TreeNode<Integer> root = ArrayToTree.insertLevelOrder(asList, null, 0);
@@ -141,4 +146,61 @@ public class TreeTravel {
 
 	}
 
+	public static void main(String [] x)  {
+		int[] data = new int[] { 111, 222, 333, 444, 555, 666, 777, 888, 999, 000 };
+        Transfer tf = new Transfer(data);
+        Thread t1 = new Thread(() -> {
+            tf.receive();
+        });
+        Thread t2 = new Thread(() -> {
+            tf.send();
+        });
+        t2.start();
+        t1.start();
+	}
 }
+
+class Transfer {
+    private int[] data;
+    private volatile int ptr;
+    private final Object lock = new Object();
+
+    public Transfer(int[] data) {
+        this.data = data;
+        this.ptr = 0;
+    }
+
+    public void send() {
+        while (ptr < data.length) {
+            synchronized (lock) {
+                try {
+                    System.out.println("-----wait "+ptr);
+                    lock.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                ptr++;
+            }
+        }
+    }
+
+    public void receive() {
+        while (ptr < data.length) {
+            synchronized (lock) {
+                System.out.println(" current is "+ptr+":" + data[ptr]);
+                System.out.println("-----notify");
+                lock.notifyAll();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            } 
+           
+        }
+    }
+
+}
+
+
+

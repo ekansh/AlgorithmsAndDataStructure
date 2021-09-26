@@ -17,6 +17,16 @@ import java.util.*;
  * 
  */
 public class TopologicalSort1 {
+	/*
+	 * 		A			B
+	 * 		   \  	   / \
+	 * 			\     /	
+	 * 			   C      |
+	 *        /			  D	
+	 *        E			  |
+	 *        |	\_________F->G
+	 *        H	
+	 */
 	public static void main(String[] args) {
 		Map<String,List<String>> graph = new LinkedHashMap<>();
 		graph.put("e",Arrays.asList("h","f"));
@@ -24,6 +34,7 @@ public class TopologicalSort1 {
 		graph.put("a",Arrays.asList("c"));
 		graph.put("c",Arrays.asList("e"));
 		graph.put("f",Arrays.asList("g"));
+		graph.put("d",Arrays.asList("f"));
 		Stack<String> res = new TopologicalSort1().sort(graph);
 		for (String string : res) {
 			System.out.print (string+"-->");

@@ -5,6 +5,7 @@ import java.util.List;
 import dataStructure.TreeNode;
 
 public class ArrayToTree {
+	//ArrayToTree.insertLevelOrder(some_list, null, 0);
 	public static <T> TreeNode<T> insertLevelOrder(List<T> list, TreeNode<T> root, int i) {
 		if (i < list.size() && list.get(i)!=null) {
 			root  =new TreeNode<T>(list.get(i));

@@ -164,9 +164,12 @@ public class MapSortBasedOnValue implements Comparable<MapSortBasedOnValue> {
 			System.out.println(p);
 		}
 //---------------------------------
-		Map<MapSortBasedOnValue, MapSortBasedOnValue> valueSortedReverseMap = pmap.entrySet().stream().
-				sorted(Entry.comparingByValue(Comparator.reverseOrder()))
-				.collect(Collectors.toMap(Entry::getKey, Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+//		Map<MapSortBasedOnValue, MapSortBasedOnValue> valueSortedReverseMap = pmap.entrySet().stream().
+//				sorted(Entry.comparingByValue(Comparator.reverseOrder()))
+//				.collect(Collectors.toMap(Entry::getKey, Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+		Map<MapSortBasedOnValue, MapSortBasedOnValue> valueSortedReverseMap = new LinkedHashMap<>();
+		pmap.entrySet().stream().sorted( (a,b)->b.getValue().compareTo(a.getValue()))
+		.forEach(e-> valueSortedReverseMap.put(e.getKey(), e.getValue()));
 		System.out.println("---valueSortedReverseMap---------------");
 
 		for (MapSortBasedOnValue p : valueSortedReverseMap.keySet()) {

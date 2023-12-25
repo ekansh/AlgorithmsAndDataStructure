@@ -2,6 +2,9 @@ import java.util.*;
 
 public class A {
 	public static void main(String[] args) {
+		LinkedList<Integer> ll = new LinkedList<>(); 
+		ll.add(1);ll.add(2);ll.add(3);ll.add(4);
+		ListIterator<Integer> node = ll.listIterator(0);
 		Map<String, Integer> map = new HashMap<String, Integer>() {
 			{
 				put("A", 10);
